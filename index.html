@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WaveWarZ Gravity Board</title>
+    <meta
+      name="description"
+      content="A live-feeling WaveWarZ dashboard prototype for music battle momentum, liquidity, fan pressure, volatility, and creator leaderboard telemetry."
+    />
+    <meta property="og:title" content="WaveWarZ Gravity Board" />
+    <meta
+      property="og:description"
+      content="DreamNet prototype for visualizing music battle gravity beyond cumulative volume."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div class="brand-lockup">
+          <span class="sigil">WWZ</span>
+          <div>
+            <p class="eyebrow">DreamNet prototype / ZAO analytics lane</p>
+            <h1>WaveWarZ Gravity Board</h1>
+          </div>
+        </div>
+        <p class="lede">
+          A battle dashboard for music markets: momentum, liquidity pressure, fan support, volatility, and creator standing in one fast scan.
+        </p>
+      </header>
+
+      <section class="control-strip" aria-label="Dashboard controls">
+        <label>
+          <span>Battle</span>
+          <select id="battleSelect"></select>
+        </label>
+        <label>
+          <span>Window</span>
+          <select id="windowSelect">
+            <option value="5">5 min pulse</option>
+            <option value="10" selected>10 min pulse</option>
+            <option value="20">20 min arc</option>
+          </select>
+        </label>
+        <button id="simulateButton" type="button">Simulate Next Tick</button>
+        <button id="copyBriefButton" type="button">Copy Brief</button>
+      </section>
+
+      <section class="kpi-grid" aria-label="Battle metrics">
+        <article>
+          <span>Battle Heat</span>
+          <strong id="kpiHeat">0</strong>
+          <small id="kpiHeatLabel">warming</small>
+        </article>
+        <article>
+          <span>Momentum</span>
+          <strong id="kpiMomentum">0 SOL/min</strong>
+          <small id="kpiMomentumLabel">steady</small>
+        </article>
+        <article>
+          <span>Fan Pressure</span>
+          <strong id="kpiFan">0%</strong>
+          <small>unique wallet support</small>
+        </article>
+        <article>
+          <span>Volatility</span>
+          <strong id="kpiVolatility">0%</strong>
+          <small>recent swing score</small>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel wide">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Module A</p>
+              <h2>Battle Momentum Curve</h2>
+            </div>
+            <span id="chartStatus">live simulation</span>
+          </div>
+          <svg id="momentumChart" role="img" aria-label="Battle momentum line chart"></svg>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Module B</p>
+              <h2>Liquidity Heatmap</h2>
+            </div>
+          </div>
+          <div id="liquidityMap" class="liquidity-map"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Module C</p>
+              <h2>Trader / Fan Split</h2>
+            </div>
+          </div>
+          <div class="split-meter" aria-label="Trader versus fan split">
+            <div id="fanBar"></div>
+            <div id="traderBar"></div>
+          </div>
+          <div class="legend-row">
+            <span><i class="fan-dot"></i>Fans</span>
+            <span><i class="trader-dot"></i>Speculators</span>
+          </div>
+          <p id="splitNote" class="note"></p>
+        </article>
+
+        <article class="panel wide">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Module D</p>
+              <h2>Volatility Alerts</h2>
+            </div>
+          </div>
+          <div id="alertRail" class="alert-rail"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Module E</p>
+              <h2>ZAO/ZABAL Leaderboard</h2>
+            </div>
+          </div>
+          <div id="leaderboard" class="leaderboard"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Handoff</p>
+              <h2>Indexer Contract</h2>
+            </div>
+          </div>
+          <ul class="handoff-list">
+            <li><b>InitializeBattle</b><span>artist pair, duration, start time</span></li>
+            <li><b>PlaceTrade</b><span>wallet, SOL amount, target artist</span></li>
+            <li><b>CastVote</b><span>voter wallet, chosen artist</span></li>
+            <li><b>SettleBattle</b><span>winner, payout, final pool</span></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="operator-brief">
+        <div>
+          <p class="eyebrow">Next build step</p>
+          <h2>Connect this to real WaveWarZ logs when repo/API access is available.</h2>
+        </div>
+        <p>
+          Until then, this prototype is enough to show Zaal the actual product direction: WaveWarZ should feel less like a simple volume chart and more like a live music-market control room.
+        </p>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
